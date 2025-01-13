@@ -10,30 +10,29 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Clear any previous errors
-    setError('');
+    setError(''); // Clear previous errors
 
     try {
       const response = await axios.post(
         'http://localhost:5000/api/login',
         { email, password },
-        { withCredentials: true }  // Ensure credentials (cookies/headers) are sent
+        { withCredentials: true } // Send cookies/headers if needed
       );
-      
-      // Handle successful login
+
       const { token, user } = response.data;
 
-      // Store the JWT token in localStorage (or cookies)
+      // Save token and user details in localStorage
       localStorage.setItem('token', token);
-
-      // Optionally store the user info for use in the app
       localStorage.setItem('user', JSON.stringify(user));
 
-      // Navigate to the home page or dashboard after successful login
-      navigate('/homepage');
+      // Navigate based on role
+      if (user.role === 'teacher') {
+        navigate('/homepage'); // Adjust if teachers have a different dashboard
+      } else if (user.role === 'student') {
+        navigate('/homepage');
+      }
     } catch (err) {
-      setError(err.response?.data?.msg || 'An error occurred');
+      setError(err.response?.data?.msg || 'Login failed. Please try again.');
     }
   };
 
@@ -70,7 +69,13 @@ function Login() {
           </button>
         </form>
         <p className="mt-4 text-center">
-          Don't have an account? <span className="text-blue-600 cursor-pointer" onClick={() => navigate('/register')}>Register</span>
+          Don't have an account?{' '}
+          <span
+            className="text-blue-600 cursor-pointer"
+            onClick={() => navigate('/register')}
+          >
+            Register
+          </span>
         </p>
       </div>
     </div>

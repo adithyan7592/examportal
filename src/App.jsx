@@ -6,6 +6,7 @@ import Home from './home';
 import Register from './register';
 import Login from './login';
 import Homepage from './homepage';
+import CreateQuestion from './createquestion';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path ='register'element={<Register/>}/>
       <Route path ='login' element={<Login/>}/>
       <Route path ='homepage' element={<Homepage/>}/>
+      <Route path="/createquestion" element={<CreateQuestion />} />
     </Routes>
     </Router>
      </div> 
