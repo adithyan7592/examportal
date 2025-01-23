@@ -27,9 +27,9 @@ function Login() {
 
       // Navigate based on role
       if (user.role === 'teacher') {
-        navigate('/homepage'); // Adjust if teachers have a different dashboard
+        navigate('/createquestion'); // Redirect teacher to createquestion page
       } else if (user.role === 'student') {
-        navigate('/homepage');
+        navigate('/homepage'); // Redirect student to homepage
       }
     } catch (err) {
       setError(err.response?.data?.msg || 'Login failed. Please try again.');
@@ -37,41 +37,44 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="bg-white p-8 rounded shadow-lg w-80">
-        <h2 className="text-2xl mb-4 text-center">Login</h2>
-        {error && <p className="text-red-600 text-center">{error}</p>}
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-200 to-blue-200">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-80">
+        <h2 className="text-3xl font-bold text-center text-indigo-600 mb-6">Login</h2>
+        {error && <p className="text-red-600 text-center mb-4">{error}</p>}
         <form onSubmit={handleLogin}>
           <div className="mb-4">
-            <label htmlFor="email" className="block mb-2">Email</label>
+            <label htmlFor="email" className="block mb-2 text-gray-700">Email</label>
             <input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
               required
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block mb-2">Password</label>
+            <label htmlFor="password" className="block mb-2 text-gray-700">Password</label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
               required
             />
           </div>
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition duration-200"
+          >
             Login
           </button>
         </form>
-        <p className="mt-4 text-center">
+        <p className="mt-4 text-center text-gray-600">
           Don't have an account?{' '}
           <span
-            className="text-blue-600 cursor-pointer"
+            className="text-indigo-600 cursor-pointer hover:underline"
             onClick={() => navigate('/register')}
           >
             Register
@@ -83,3 +86,4 @@ function Login() {
 }
 
 export default Login;
+

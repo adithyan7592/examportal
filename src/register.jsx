@@ -46,13 +46,13 @@ function Register() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-200 to-blue-200">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+        <h2 className="text-3xl font-bold text-center text-indigo-600 mb-6">
           Create an Account
         </h2>
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-        {successMessage && <p className="text-green-500">{successMessage}</p>}
+        {errorMessage && <p className="text-red-600 text-center mb-4">{errorMessage}</p>}
+        {successMessage && <p className="text-green-600 text-center mb-4">{successMessage}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">
@@ -64,7 +64,7 @@ function Register() {
               value={fullname}
               onChange={(e) => setFullname(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="John Doe"
             />
           </div>
@@ -78,7 +78,7 @@ function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="example@example.com"
             />
           </div>
@@ -92,7 +92,7 @@ function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="********"
             />
           </div>
@@ -106,7 +106,7 @@ function Register() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="********"
             />
           </div>
@@ -119,7 +119,7 @@ function Register() {
               value={role}
               onChange={(e) => setRole(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="" disabled>
                 Choose a role
@@ -130,7 +130,7 @@ function Register() {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Register
           </button>
@@ -138,7 +138,7 @@ function Register() {
         <p className="text-center text-sm text-gray-600 mt-4">
           Already have an account?{' '}
           <span
-            className="text-blue-500 hover:text-blue-600 cursor-pointer"
+            className="text-indigo-600 hover:underline cursor-pointer"
             onClick={() => navigate('/login')}
           >
             Login
@@ -150,4 +150,5 @@ function Register() {
 }
 
 export default Register;
+
 

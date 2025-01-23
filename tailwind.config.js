@@ -1,10 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],  // Correct path
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['PT Serif', 'serif'], 
+      },
+    },
   },
   plugins: [],
-}
+};
+
 
 
